@@ -40,7 +40,31 @@ public class NameUtils {
         return newName;
     }
 
+    public static String urlConcat(String baseUrl,String fullFilenameToAdd){
+        if(StringUtils.isBlank(baseUrl)){
+            return fullFilenameToAdd;
+        }
+        if(StringUtils.isBlank(fullFilenameToAdd)){
+            return baseUrl;
+        }
+        char ch = baseUrl.charAt(baseUrl.length() - 1);
+        char ch1 = fullFilenameToAdd.charAt(0);
+        if(ch1 =='/'){
+            fullFilenameToAdd = StringUtils.substring(fullFilenameToAdd,1);
+        }
+        String result ;
+        if(ch == '/'){
+            result = baseUrl + fullFilenameToAdd;
+        }else{
+            result = baseUrl + '/' + fullFilenameToAdd;
+        }
+
+        return result;
+    }
     public static void main(String[] args) {
-        System.out.println(randomFileName("a.png"));
+        System.out.println(urlConcat("http://127.0.0.1/f","/a.jpg"));
+        System.out.println(urlConcat("http://127.0.0.1/f/","/a.jpg"));
+        System.out.println(urlConcat("http://127.0.0.1/f/","/a.jpg"));
+        System.out.println(urlConcat("http://127.0.0.1/f","a.jpg"));
     }
 }
