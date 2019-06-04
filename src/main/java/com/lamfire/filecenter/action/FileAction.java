@@ -6,6 +6,7 @@ import com.lamfire.json.JSON;
 import com.lamfire.logger.Logger;
 import com.lamfire.utils.FileUtils;
 import com.lamfire.utils.FilenameUtils;
+import com.lamfire.utils.URLUtils;
 import com.lamfire.wkit.MultiPartFile;
 import com.lamfire.wkit.action.ActionSupport;
 import com.lamfire.wkit.anno.ACTION;
@@ -35,7 +36,7 @@ public class FileAction extends ActionSupport {
 
         String fileNewName = NameUtils.randomFileName(file.getFileName());
         String filePath = NameUtils.filePath(datePattern,fileNewName);
-        String fileUrl = FilenameUtils.concat(urlPrefix,filePath);
+        String fileUrl = urlPrefix + filePath;
         String fileStorePath = FilenameUtils.concat(storeDir,filePath);
 
         File saveAsFile = new File(fileStorePath);

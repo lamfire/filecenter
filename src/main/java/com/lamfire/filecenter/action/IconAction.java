@@ -35,7 +35,7 @@ public class IconAction extends ActionSupport {
 
         String fileNewName = NameUtils.randomFileName(file.getFileName());
         String filePath = NameUtils.filePath(datePattern,fileNewName);
-        String fileUrl = FilenameUtils.concat(urlPrefix,filePath);
+        String fileUrl = urlPrefix + filePath;
         String fileStorePath = FilenameUtils.concat(storeDir,filePath);
 
         File saveAsFile = new File(fileStorePath);
