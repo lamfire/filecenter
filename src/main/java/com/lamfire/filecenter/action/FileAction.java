@@ -22,6 +22,13 @@ public class FileAction extends ActionSupport {
 
     @MAPPING(path = "/file/upload")
     public void upload(@PARAM(value = "file")MultiPartFile file, OutputStream out){
+        if(file == null){
+            JSON json = new JSON();
+            json.put("status",500);
+            json.put("error","multi part file not found");
+            this.write(out,json.toBytes());
+            return;
+        }
         String datePattern = FileCenterConfig.getInstance().getFileStoreDirDatePattern();
         String urlPrefix  = FileCenterConfig.getInstance().getFileDownloadUrlPrefix();
         String storeDir = FileCenterConfig.getInstance().getFileStoreDir();

@@ -22,6 +22,13 @@ public class IconAction extends ActionSupport {
 
     @MAPPING(path = "/icon/upload")
     public void upload(@PARAM(value = "file")MultiPartFile file, OutputStream out){
+        if(file == null){
+            JSON json = new JSON();
+            json.put("status",500);
+            json.put("error","multi part file not found");
+            this.write(out,json.toBytes());
+            return;
+        }
         String datePattern = FileCenterConfig.getInstance().getIconStoreDirDatePattern();
         String urlPrefix  = FileCenterConfig.getInstance().getIconDownloadUrlPrefix();
         String storeDir = FileCenterConfig.getInstance().getIconStoreDir();

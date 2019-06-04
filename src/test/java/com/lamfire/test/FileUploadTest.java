@@ -11,9 +11,9 @@ public class FileUploadTest {
         HttpClient http = new HttpClient();
         http.setContentType(HttpClient.ContentType.multipart_form_data);
         http.setMethod("POST");
-        http.open("http://127.0.0.1:8080/filecenter/file/upload");
+        http.open("http://192.168.31.203:8080/filecenter/file/upload");
 
-        File file = new File("//Users/lamfire/Downloads/1.JPG");
+        File file = new File("/data/1.jpg");
         http.sendMultipartFile("file", file);
         http.sendMultipartFinish();
 
