@@ -6,6 +6,7 @@ import com.lamfire.json.JSON;
 import com.lamfire.logger.Logger;
 import com.lamfire.utils.FileUtils;
 import com.lamfire.utils.FilenameUtils;
+import com.lamfire.utils.ImageScale;
 import com.lamfire.wkit.MultiPartFile;
 import com.lamfire.wkit.action.ActionSupport;
 import com.lamfire.wkit.anno.ACTION;
@@ -56,4 +57,5 @@ public class ImageAction extends ActionSupport {
             this.write(out,json.toBytes());
         }
     }
+
 }

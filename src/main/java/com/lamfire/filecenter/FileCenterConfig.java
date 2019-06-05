@@ -1,7 +1,10 @@
 package com.lamfire.filecenter;
 
 import com.lamfire.logger.Logger;
+import com.lamfire.utils.NumberUtils;
 import com.lamfire.utils.PropertiesUtils;
+import com.lamfire.utils.StringUtils;
+import com.lamfire.utils.TypeConvertUtils;
 
 import java.util.Properties;
 
@@ -26,10 +29,16 @@ public class FileCenterConfig {
     private String iconDownloadUrlPrefix;
     private String iconStoreDir;
     private String iconStoreDirDatePattern;
+    private boolean iconScaleEnable = false;
+    private int iconScaleWidth = 64;
+    private int iconScaleHeight = 64;
 
     private String avatarDownloadUrlPrefix;
     private String avatarStoreDir;
     private String avatarStoreDirDatePattern;
+    private boolean avatarScaleEnable = false;
+    private int avatarScaleWidth = 64;
+    private int avatarScaleHeight = 64;
 
     private FileCenterConfig(){
         Properties prop = PropertiesUtils.load(FILE_CENTER_CONFIG_FILE,PropertiesUtils.class);
@@ -52,16 +61,28 @@ public class FileCenterConfig {
         this.iconDownloadUrlPrefix = prop.getProperty("icon.download.url.prefix");
         this.iconStoreDir = prop.getProperty("icon.store.dir");
         this.iconStoreDirDatePattern = prop.getProperty("icon.store.dir.datepattern");
+        this.iconScaleEnable = TypeConvertUtils.toBoolean(prop.getProperty("icon.scale.enable"));
+        this.iconScaleWidth = NumberUtils.toInt(prop.getProperty("icon.scale.width"),64);
+        this.iconScaleHeight = NumberUtils.toInt(prop.getProperty("icon.scale.height"),64);
         LOGGER.info("iconDownloadUrlPrefix : " + iconDownloadUrlPrefix);
         LOGGER.info("iconStoreDir : " + iconStoreDir);
         LOGGER.info("iconStoreDirDatePattern : " + iconStoreDirDatePattern);
+        LOGGER.info("iconScaleEnable : " + iconScaleEnable);
+        LOGGER.info("iconScaleWidth : " + iconScaleWidth);
+        LOGGER.info("iconScaleHeight : " + iconScaleHeight);
 
         this.avatarDownloadUrlPrefix = prop.getProperty("avatar.download.url.prefix");
         this.avatarStoreDir = prop.getProperty("avatar.store.dir");
         this.avatarStoreDirDatePattern = prop.getProperty("avatar.store.dir.datepattern");
+        this.avatarScaleEnable = TypeConvertUtils.toBoolean(prop.getProperty("avatar.scale.enable"));
+        this.avatarScaleWidth = NumberUtils.toInt(prop.getProperty("avatar.scale.width"),64);
+        this.avatarScaleHeight = NumberUtils.toInt(prop.getProperty("avatar.scale.height"),64);
         LOGGER.info("avatarDownloadUrlPrefix : " + avatarDownloadUrlPrefix);
         LOGGER.info("avatarStoreDir : " + avatarStoreDir);
         LOGGER.info("avatarStoreDirDatePattern : " + avatarStoreDirDatePattern);
+        LOGGER.info("avatarScaleEnable : " + avatarScaleEnable);
+        LOGGER.info("avatarScaleWidth : " + avatarScaleWidth);
+        LOGGER.info("avatarScaleHeight : " + avatarScaleHeight);
 
 
     }
@@ -160,5 +181,53 @@ public class FileCenterConfig {
 
     public void setAvatarStoreDirDatePattern(String avatarStoreDirDatePattern) {
         this.avatarStoreDirDatePattern = avatarStoreDirDatePattern;
+    }
+
+    public boolean isIconScaleEnable() {
+        return iconScaleEnable;
+    }
+
+    public void setIconScaleEnable(boolean iconScaleEnable) {
+        this.iconScaleEnable = iconScaleEnable;
+    }
+
+    public int getIconScaleWidth() {
+        return iconScaleWidth;
+    }
+
+    public void setIconScaleWidth(int iconScaleWidth) {
+        this.iconScaleWidth = iconScaleWidth;
+    }
+
+    public int getIconScaleHeight() {
+        return iconScaleHeight;
+    }
+
+    public void setIconScaleHeight(int iconScaleHeight) {
+        this.iconScaleHeight = iconScaleHeight;
+    }
+
+    public boolean isAvatarScaleEnable() {
+        return avatarScaleEnable;
+    }
+
+    public void setAvatarScaleEnable(boolean avatarScaleEnable) {
+        this.avatarScaleEnable = avatarScaleEnable;
+    }
+
+    public int getAvatarScaleWidth() {
+        return avatarScaleWidth;
+    }
+
+    public void setAvatarScaleWidth(int avatarScaleWidth) {
+        this.avatarScaleWidth = avatarScaleWidth;
+    }
+
+    public int getAvatarScaleHeight() {
+        return avatarScaleHeight;
+    }
+
+    public void setAvatarScaleHeight(int avatarScaleHeight) {
+        this.avatarScaleHeight = avatarScaleHeight;
     }
 }

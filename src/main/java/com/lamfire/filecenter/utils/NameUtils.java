@@ -47,6 +47,8 @@ public class NameUtils {
         if(StringUtils.isBlank(fullFilenameToAdd)){
             return baseUrl;
         }
+
+        fullFilenameToAdd = StringUtils.replaceChars(fullFilenameToAdd,'\\','/');
         char ch = baseUrl.charAt(baseUrl.length() - 1);
         char ch1 = fullFilenameToAdd.charAt(0);
         if(ch1 =='/'){
