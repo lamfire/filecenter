@@ -10,7 +10,7 @@ public class AvatarUploadTest {
         HttpClient http = new HttpClient();
         http.setContentType(HttpClient.ContentType.multipart_form_data);
         http.setMethod("POST");
-        http.open("http://127.0.0.1:8080/filecenter/avatar/upload");
+        http.open("http://192.168.31.203:8080/filecenter/avatar/upload");
 
         File file = new File("/data/1.jpg");
         http.sendMultipartFile("file", file);
